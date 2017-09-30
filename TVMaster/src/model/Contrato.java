@@ -128,4 +128,17 @@ public class Contrato {
         setEstado(0);
         return true;
     }
+    public void criarChamado(String motivo, String solucao, int data, int protocolo, boolean situacao, Cliente solicitante){
+        Chamado novo = new Chamado(motivo, solucao, data, protocolo, situacao, solicitante);
+        chamados.add(novo);
+    }
+    
+    public Chamado buscarChamado(int protocolo){
+        for (Chamado atual : chamados){
+            if (atual.getProtocolo() == protocolo){
+                return atual;
+            }
+        }
+        return null;
+    }
 }
