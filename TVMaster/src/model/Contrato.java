@@ -99,4 +99,33 @@ public class Contrato {
         }
         return null;
     }
+    public boolean adicionarReceptor(int quantidade){
+        if ((getReceptores() + quantidade) <= 4){
+            setReceptores(getReceptores() + quantidade);
+            return true;
+        }
+        return false;
+    }
+    public boolean removerReceptor(int quantidade){
+        if ((getReceptores() - quantidade) >= 1){
+            setReceptores(getReceptores() - quantidade);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean cancelarContrato(){
+        if (getEstado() == 1){      //Estado 0 = ativo,  1 = inativo, 2 = inadimplente
+            return false;
+        }
+        setEstado(1);
+        return true;
+    }
+    public boolean reativarContrato(){
+        if (getEstado() == 0){      //Estado 0 = ativo,  1 = inativo, 2 = inadimplente
+            return false;
+        }
+        setEstado(0);
+        return true;
+    }
 }
