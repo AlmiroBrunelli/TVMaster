@@ -30,16 +30,8 @@ public class Contrato {
         return numero;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
     public int getReceptores() {
         return receptores;
-    }
-
-    public void setReceptores(int receptores) {
-        this.receptores = receptores;
     }
 
     public String getEndereco() {
@@ -109,14 +101,14 @@ public class Contrato {
     }
     public boolean adicionarReceptor(int quantidade){
         if ((getReceptores() + quantidade) <= 4){
-            setReceptores(getReceptores() + quantidade);
+            receptores = getReceptores() + quantidade;
             return true;
         }
         return false;
     }
     public boolean removerReceptor(int quantidade){
         if ((getReceptores() - quantidade) >= 1){
-            setReceptores(getReceptores() - quantidade);
+            receptores = getReceptores() - quantidade;
             return true;
         }
         return false;
@@ -136,8 +128,8 @@ public class Contrato {
         setEstado(0);
         return true;
     }
-    public void criarChamado(String motivo, String solucao, int data, int protocolo, boolean situacao, Cliente solicitante){
-        Chamado novo = new Chamado(motivo, solucao, data, protocolo, situacao, solicitante);
+    public void criarChamado(String motivo, int data, int protocolo, boolean situacao, Cliente solicitante){
+        Chamado novo = new Chamado(motivo, data, protocolo, situacao, solicitante);
         chamados.add(novo);
     }
     

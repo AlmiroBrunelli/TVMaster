@@ -2,27 +2,22 @@ package model;
 
 import java.util.ArrayList;
 
-public class Cliente {
+public class Cliente extends Pessoa{
     private ArrayList <Contrato> contratos = new ArrayList <Contrato>();
 
-    public Cliente() {
+    public Cliente(String nome, String email, int cpf, int telefone, ArrayList<Contrato> contratos) {
+        super(nome, email, cpf, telefone);
+        this.contratos = contratos;
     }
 
     public ArrayList<Contrato> getContratos() {
         return contratos;
     }
-
-    public void setContratos(Contrato contratos) {
-        this.contratos.add(contratos);
+    
+    public void adicionarContrato(Contrato contrato) {
+        contratos.add(contrato);
     }
     
-    public void alterarContratos(int numeroContrato){
-        for (Contrato atual : contratos){
-            if (atual.numero == numeroContrato){
-                
-            }
-        }
-    }
     public Contrato pesquisarContrato(int numero) {
         for(Contrato atual : contratos){
             if (atual.getNumero() == numero){

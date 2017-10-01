@@ -7,7 +7,7 @@ public class Chamado {
     private boolean situacao;
     private Cliente solicitante;
 
-    public Chamado(String motivo, String solucao, int data, int protocolo, boolean situacao, Cliente solicitante) {
+    public Chamado(String motivo, int data, int protocolo, boolean situacao, Cliente solicitante) {
         this.motivo = motivo;
         this.solucao = solucao;
         this.data = data;
@@ -18,10 +18,6 @@ public class Chamado {
 
     public String getMotivo() {
         return motivo;
-    }
-
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
     }
 
     public String getSolucao() {
@@ -44,10 +40,6 @@ public class Chamado {
         return protocolo;
     }
 
-    public void setProtocolo(int protocolo) {
-        this.protocolo = protocolo;
-    }
-
     public Tecnico getTecnico() {
         return tecnico;
     }
@@ -59,11 +51,6 @@ public class Chamado {
     public Cliente getSolicitante() {
         return solicitante;
     }
-
-    public void setSolicitante(Cliente solicitante) {
-        this.solicitante = solicitante;
-    }
-
     
     public String fecharChamado(){
         if (this.situacao){
