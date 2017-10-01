@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class TVMaster {
 
     public static void main(String[] args) {
-        
+
         // DECLARAÇÃO DOS CANAIS
        
         ArrayList<Canal> canaisNoticia = new ArrayList<Canal>();
@@ -151,6 +151,33 @@ public class TVMaster {
             System.out.println("Nome: " + atual.getNome() + " Preço: R$" + 
                     format(atual.getPreco()) + " Canal: " + atual.getNumero());
         }
+        
+        Contrato contrato = new Contrato(1, 1, "Rua A, N57", 0, "Salvador", top);
+        ArrayList<Contrato> contratos = new ArrayList<Contrato>();
+        contratos.add(contrato);
+        
+        Cliente cliente = new Cliente("Fulano de Tal", "fulano@email.com", 999999, 33333333, contratos);
+        
+        Contrato contratoPesquisado = cliente.pesquisarContrato(1);
+        contratoPesquisado.adicionarReceptor(2);
+        contratoPesquisado.criarFatura("Janeiro");
+        contratoPesquisado.criarChamado("Sinal ruim", 25042017, 2017001, false, cliente);
+        contratoPesquisado.verificarInadimplencia();
+        
+        System.out.println("Impressão Contratos");
+        for(Contrato atual : cliente.getContratos()) {
+            System.out.println("Numero: " + atual.getNumero());
+            System.out.println("Endereço: " + atual.getEndereco());
+            System.out.println("Estado: " + atual.getEstado());
+            System.out.println("Receptores: " + atual.getReceptores());
+            System.out.println("Chamados do contrato:");
+            for(Chamado catual : atual.getChamados()) {
+                System.out.println("Motivo: " + catual.getMotivo());
+                System.out.println("Data: " + catual.getData());
+                System.out.println("Situação: " + catual.isSituacao());
+            }
+        }
+        
     }
     public static String format(double x) {  
         DecimalFormat df = new DecimalFormat("#0.00");  
