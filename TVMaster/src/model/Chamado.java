@@ -2,16 +2,15 @@ package model;
 
 public class Chamado {
     private String motivo, solucao;
-    private int data, cpf, protocolo;
+    private int data, protocolo;
     private Tecnico tecnico;
     private boolean situacao;
     private Cliente solicitante;
 
-    public Chamado(String motivo, String solucao, int data, int cpf, int protocolo, boolean situacao, Cliente solicitante) {
+    public Chamado(String motivo, String solucao, int data, int protocolo, boolean situacao, Cliente solicitante) {
         this.motivo = motivo;
         this.solucao = solucao;
         this.data = data;
-        this.cpf = cpf;
         this.protocolo = protocolo;
         this.situacao = situacao;
         this.solicitante = solicitante;
@@ -39,14 +38,6 @@ public class Chamado {
 
     public void setData(int data) {
         this.data = data;
-    }
-
-    public int getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(int cpf) {
-        this.cpf = cpf;
     }
 
     public int getProtocolo() {

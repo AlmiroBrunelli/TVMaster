@@ -18,6 +18,14 @@ public class Contrato {
         this.plano = plano;
     }
 
+    public ArrayList<Chamado> getChamados() {
+        return chamados;
+    }
+
+    public ArrayList<Fatura> getFaturas() {
+        return faturas;
+    }
+
     public int getNumero() {
         return numero;
     }
@@ -94,6 +102,48 @@ public class Contrato {
     public Fatura buscarFatura(){
         for (Fatura atual : faturas){
             if (!atual.isPago()){
+                return atual;
+            }
+        }
+        return null;
+    }
+    public boolean adicionarReceptor(int quantidade){
+        if ((getReceptores() + quantidade) <= 4){
+            setReceptores(getReceptores() + quantidade);
+            return true;
+        }
+        return false;
+    }
+    public boolean removerReceptor(int quantidade){
+        if ((getReceptores() - quantidade) >= 1){
+            setReceptores(getReceptores() - quantidade);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean cancelarContrato(){
+        if (getEstado() == 1){      //Estado 0 = ativo,  1 = inativo, 2 = inadimplente
+            return false;
+        }
+        setEstado(1);
+        return true;
+    }
+    public boolean reativarContrato(){
+        if (getEstado() == 0){      //Estado 0 = ativo,  1 = inativo, 2 = inadimplente
+            return false;
+        }
+        setEstado(0);
+        return true;
+    }
+    public void criarChamado(String motivo, String solucao, int data, int protocolo, boolean situacao, Cliente solicitante){
+        Chamado novo = new Chamado(motivo, solucao, data, protocolo, situacao, solicitante);
+        chamados.add(novo);
+    }
+    
+    public Chamado buscarChamado(int protocolo){
+        for (Chamado atual : chamados){
+            if (atual.getProtocolo() == protocolo){
                 return atual;
             }
         }
