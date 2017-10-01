@@ -18,6 +18,14 @@ public class Contrato {
         this.plano = plano;
     }
 
+    public ArrayList<Chamado> getChamados() {
+        return chamados;
+    }
+
+    public ArrayList<Fatura> getFaturas() {
+        return faturas;
+    }
+
     public int getNumero() {
         return numero;
     }

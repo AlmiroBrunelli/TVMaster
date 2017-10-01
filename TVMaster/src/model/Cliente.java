@@ -23,7 +23,7 @@ public class Cliente {
             }
         }
     }
-    private Contrato pesquisarContrato(int numero) {
+    public Contrato pesquisarContrato(int numero) {
         for(Contrato atual : contratos){
             if (atual.getNumero() == numero){
                 return atual;
