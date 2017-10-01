@@ -7,4 +7,13 @@ public class Tecnico extends Funcionario{
         super(matricula, tipo, nome, email, cpf, telefone);
         this.cidade = cidade;
     }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+    
 }
