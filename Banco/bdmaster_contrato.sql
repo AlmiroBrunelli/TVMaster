@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: bdtv
+-- Host: localhost    Database: bdmaster
 -- ------------------------------------------------------
 -- Server version	5.7.18-log
 
@@ -16,30 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `chamado`
+-- Table structure for table `contrato`
 --
 
-DROP TABLE IF EXISTS `chamado`;
+DROP TABLE IF EXISTS `contrato`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `chamado` (
-  `protocolo` int(11) NOT NULL AUTO_INCREMENT,
-  `data` datetime NOT NULL,
-  `motivo` varchar(45) NOT NULL,
-  `nrContrato` int(11) NOT NULL,
-  PRIMARY KEY (`protocolo`),
-  KEY `frContrato_idx` (`nrContrato`),
-  CONSTRAINT `frContrato` FOREIGN KEY (`nrContrato`) REFERENCES `contrato` (`numero`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `contrato` (
+  `numero` int(11) NOT NULL AUTO_INCREMENT,
+  `receptores` int(11) NOT NULL,
+  `estadoContrato` int(11) NOT NULL,
+  `rua` varchar(45) NOT NULL,
+  `complemento` varchar(45) DEFAULT NULL,
+  `cidade` varchar(45) NOT NULL,
+  `fk_cliente` int(11) NOT NULL,
+  PRIMARY KEY (`numero`),
+  UNIQUE KEY `numero_UNIQUE` (`numero`),
+  KEY `fk_cliente_idx` (`fk_cliente`),
+  CONSTRAINT `fk_cliente` FOREIGN KEY (`fk_cliente`) REFERENCES `cliente` (`cpf`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `chamado`
+-- Dumping data for table `contrato`
 --
 
-LOCK TABLES `chamado` WRITE;
-/*!40000 ALTER TABLE `chamado` DISABLE KEYS */;
-/*!40000 ALTER TABLE `chamado` ENABLE KEYS */;
+LOCK TABLES `contrato` WRITE;
+/*!40000 ALTER TABLE `contrato` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contrato` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-26 14:06:24
+-- Dump completed on 2017-11-03 19:37:31

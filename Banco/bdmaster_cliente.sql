@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: bdtv
+-- Host: localhost    Database: bdmaster
 -- ------------------------------------------------------
 -- Server version	5.7.18-log
 
@@ -16,31 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `canal`
+-- Table structure for table `cliente`
 --
 
-DROP TABLE IF EXISTS `canal`;
+DROP TABLE IF EXISTS `cliente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `canal` (
-  `numero` int(11) NOT NULL,
-  `nome` varchar(45) DEFAULT NULL,
-  `classificacao` varchar(45) DEFAULT NULL,
-  `catCanal` int(11) DEFAULT NULL,
-  `preco` float DEFAULT NULL,
-  PRIMARY KEY (`numero`),
-  KEY `fkCatCanal_idx` (`catCanal`),
-  CONSTRAINT `fkCatCanal` FOREIGN KEY (`catCanal`) REFERENCES `categoria` (`idcategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `cliente` (
+  `cpf` int(11) NOT NULL,
+  `nome` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `telefone` int(11) NOT NULL,
+  PRIMARY KEY (`cpf`),
+  UNIQUE KEY `cpf_UNIQUE` (`cpf`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `canal`
+-- Dumping data for table `cliente`
 --
 
-LOCK TABLES `canal` WRITE;
-/*!40000 ALTER TABLE `canal` DISABLE KEYS */;
-/*!40000 ALTER TABLE `canal` ENABLE KEYS */;
+LOCK TABLES `cliente` WRITE;
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-26 14:06:21
+-- Dump completed on 2017-11-03 19:37:31
