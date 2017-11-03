@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: bdtv
+-- Host: localhost    Database: bdmaster
 -- ------------------------------------------------------
 -- Server version	5.7.18-log
 
@@ -16,29 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cliente`
+-- Table structure for table `plano`
 --
 
-DROP TABLE IF EXISTS `cliente`;
+DROP TABLE IF EXISTS `plano`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cliente` (
-  `cpf` varchar(11) NOT NULL,
+CREATE TABLE `plano` (
+  `idplano` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
-  `telefone` varchar(11) NOT NULL,
-  `email` varchar(80) NOT NULL,
-  PRIMARY KEY (`cpf`)
+  `quantidadeCategorias` int(11) NOT NULL,
+  PRIMARY KEY (`idplano`),
+  UNIQUE KEY `idplano_UNIQUE` (`idplano`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cliente`
+-- Dumping data for table `plano`
 --
 
-LOCK TABLES `cliente` WRITE;
-/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES ('123','maria','787878','maria@maria'),('456','joao','99887','joao@teste');
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+LOCK TABLES `plano` WRITE;
+/*!40000 ALTER TABLE `plano` DISABLE KEYS */;
+/*!40000 ALTER TABLE `plano` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-26 14:06:25
+-- Dump completed on 2017-11-03 19:37:31
