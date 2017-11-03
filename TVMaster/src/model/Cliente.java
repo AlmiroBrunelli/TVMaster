@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Cliente extends Pessoa{
     private ArrayList <Contrato> contratos = new ArrayList <Contrato>();
 
-    public Cliente(String nome, String email, int cpf, int telefone, ArrayList<Contrato> contratos) {
+    public Cliente(String nome, String email, String cpf, int telefone, ArrayList<Contrato> contratos) {
         super(nome, email, cpf, telefone);
         this.contratos = contratos;
     }
