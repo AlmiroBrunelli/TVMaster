@@ -1,7 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import static model.TVMaster.format;
+import static tvmaster.TVMaster.format;
 
 public abstract class PlanoDeCategoria extends Plano{
     private final float desconto;
