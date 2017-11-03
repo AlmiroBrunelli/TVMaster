@@ -7,9 +7,7 @@ import model.Categoria;
 import model.Chamado;
 import model.Cliente;
 import model.Contrato;
-import model.Ilimitado;
-import model.Regular;
-import model.Top;
+
 
 public class TVMaster {
 
