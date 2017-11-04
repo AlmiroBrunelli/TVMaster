@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Cliente;
+import model.Contrato;
 
 /**
  *
@@ -39,7 +40,7 @@ public class ClienteDAO {
     
     public void pesquisarCliente(Cliente cliente) {
         try {
-            String sql = "select * from bdmaster.cliente where cpf = ?;";
+            String sql = "SELECT * FROM bdmaster.cliente WHERE cpf = ?;";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
             p.setInt(1, Integer.parseInt(cliente.getCpf()));

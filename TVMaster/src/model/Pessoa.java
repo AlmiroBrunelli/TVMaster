@@ -10,6 +10,9 @@ public abstract class Pessoa {
         this.cpf = cpf;
         this.telefone = telefone;
     }
+    public Pessoa(){
+        
+    }
 
     public String getNome() {
         return nome;

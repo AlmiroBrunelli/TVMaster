@@ -1,10 +1,11 @@
 package model;
 
+import controller.ContratoDAO;
 import java.util.ArrayList;
 
 public class Contrato {
-    int numero, receptores, estado;
-    String endereco, cidade;
+    int numero, receptores = 0, estado;
+    String endereco, cidade, cpf;
     Plano plano;
     ArrayList <Chamado> chamados = new ArrayList<Chamado>();
     ArrayList <Fatura> faturas = new ArrayList<Fatura>();
@@ -18,6 +19,19 @@ public class Contrato {
         this.plano = plano;
     }
 
+    public Contrato() {
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
+    
+    
     public ArrayList<Chamado> getChamados() {
         return chamados;
     }
@@ -141,4 +155,10 @@ public class Contrato {
         }
         return null;
     }
+    
+    public void pesquisar(){
+        ContratoDAO contratoDAO = new ContratoDAO();
+        contratoDAO.pesquisarContrato(this);
+    }
+    
 }
