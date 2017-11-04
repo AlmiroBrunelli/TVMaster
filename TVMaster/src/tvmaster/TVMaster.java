@@ -11,7 +11,7 @@ import model.Ilimitado;
 import model.Regular;
 import model.Top;*/
 import javax.swing.UIManager;
-import view.TelaLogin;
+//import view.TelaLogin;
 
 
 public class TVMaster {
@@ -22,8 +22,8 @@ public class TVMaster {
               UIManager.setLookAndFeel(tema_padrao);  
             } catch (Exception e) {  
         }*/
-        TelaLogin tela = new TelaLogin();
-        tela.setVisible(true);
+    /*    TelaLogin tela = new TelaLogin();
+        tela.setVisible(true);*/
     }
         /*
         // DECLARAÇÃO DOS CANAIS
