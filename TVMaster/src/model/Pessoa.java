@@ -1,10 +1,9 @@
 package model;
 
 public abstract class Pessoa {
-    private String nome, email, cpf;
-    private int telefone;
+    private String nome, email, cpf, telefone;
 
-    public Pessoa(String nome, String email, String cpf, int telefone) {
+    public Pessoa(String nome, String email, String cpf, String telefone) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
@@ -38,11 +37,11 @@ public abstract class Pessoa {
         this.cpf = cpf;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
     
