@@ -2,5 +2,6 @@ TVMaster/nbproject/private/
 desktop.ini
 TVMaster/build/**
 TVMaster/build/*
+TVMaster/build/built-jar.properties
 TVMaster/dist/*
 *.class
