@@ -1,12 +1,31 @@
-package model;
+package tvmaster;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import model.Canal;
+/*import model.Categoria;
+import model.Chamado;
+import model.Cliente;
+import model.Contrato;
+import model.Ilimitado;
+import model.Regular;
+import model.Top;*/
+import javax.swing.UIManager;
+import view.TelaLogin;
+
 
 public class TVMaster {
 
     public static void main(String[] args) {
-
+        String tema_padrao = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+        try {  
+              UIManager.setLookAndFeel(tema_padrao);  
+            } catch (Exception e) {  
+        }
+        TelaLogin tela = new TelaLogin();
+        tela.setVisible(true);
+    }
+        /*
         // DECLARAÇÃO DOS CANAIS
        
         ArrayList<Canal> canaisNoticia = new ArrayList<Canal>();
@@ -178,7 +197,7 @@ public class TVMaster {
             }
         }
         
-    }
+    }*/
     public static String format(double x) {  
         DecimalFormat df = new DecimalFormat("#0.00");  
         return df.format(x);
@@ -192,7 +211,7 @@ public class TVMaster {
             }
             
         }
-        return teste;
+        return teste;    
     }
-    
+
 }
