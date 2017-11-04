@@ -3,7 +3,7 @@ package model;
 public class Funcionario extends Pessoa{
     private int matricula, tipo;
 
-    public Funcionario(int matricula, int tipo, String nome, String email, String cpf, int telefone) {
+    public Funcionario(int matricula, int tipo, String nome, String email, String cpf, String telefone) {
         super(nome, email, cpf, telefone);
         this.matricula = matricula;
         this.tipo = tipo;
