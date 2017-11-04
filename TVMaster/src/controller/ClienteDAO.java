@@ -25,8 +25,8 @@ public class ClienteDAO {
             PreparedStatement p = conn.prepareStatement(sql);
             p.setString(1, cliente.getNome());
             p.setString(2, cliente.getEmail());
-            p.setInt(3, Integer.parseInt(cliente.getCpf()));
-            p.setInt(4, Integer.parseInt(cliente.getTelefone()));
+            p.setString(3, cliente.getCpf());
+            p.setString(4, cliente.getTelefone());
             resposta = p.executeUpdate();
         } catch(SQLException e) {
         } finally {
@@ -64,11 +64,13 @@ public class ClienteDAO {
             p.setString(1, cliente.getNome());
             p.setString(2, cliente.getEmail());
             p.setString(3, cliente.getTelefone());
-            p.setInt(4, Integer.parseInt(cliente.getCpf()));
+            p.setString(4, cliente.getCpf());
+            resposta = p.executeUpdate();
+            System.out.println("Resposta: " + resposta);
         } catch(SQLException e){
             
         } finally {
-            if(resposta > 1){
+            if(resposta > 0){
                 return true;
             } else {
                 return false;
@@ -82,7 +84,7 @@ public class ClienteDAO {
             String sql = "DELETE FROM bdmaster.cliente WHERE cpf = ?;";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
-            p.setInt(1, Integer.parseInt(cliente.getCpf()));
+            p.setString(1, cliente.getCpf());
             resposta = p.executeUpdate();
         } catch(SQLException e){
         } finally {

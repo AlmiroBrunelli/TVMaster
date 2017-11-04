@@ -5,6 +5,7 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Contrato;
 
@@ -40,7 +41,6 @@ public class TelaCliente extends javax.swing.JFrame {
         jTextFieldEmail = new javax.swing.JTextField();
         jButtonPesquisar = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
-        jFormattedTextFieldCPF = new javax.swing.JFormattedTextField();
         jButtonCadastrar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -49,6 +49,7 @@ public class TelaCliente extends javax.swing.JFrame {
         jButtonRemover = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jTextFieldTelefone = new javax.swing.JTextField();
+        jTextFieldCPF = new javax.swing.JTextField();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -63,6 +64,12 @@ public class TelaCliente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nome:");
+
+        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNomeActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -89,17 +96,6 @@ public class TelaCliente extends javax.swing.JFrame {
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLimparActionPerformed(evt);
-            }
-        });
-
-        try {
-            jFormattedTextFieldCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextFieldCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextFieldCPFActionPerformed(evt);
             }
         });
 
@@ -201,14 +197,14 @@ public class TelaCliente extends javax.swing.JFrame {
                                 .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(214, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                             .addComponent(jLabel7)
-                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                             .addComponent(jLabel3)
-                            .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -222,7 +218,7 @@ public class TelaCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -259,47 +255,62 @@ public class TelaCliente extends javax.swing.JFrame {
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         Cliente cliente = new Cliente();
-        Contrato contrato = new Contrato();
-        cliente.setCpf(jFormattedTextFieldCPF.getText());
+        cliente.setCpf(jTextFieldCPF.getText());
         cliente.pesquisar();
-        contrato.setCpf(jFormattedTextFieldCPF.getText());
-        contrato.pesquisar();
-        System.out.println(contrato.getCidade()+ contrato.getReceptores());
         jTextFieldNome.setText(cliente.getNome());
         jTextFieldEmail.setText(cliente.getEmail());
+        jTextFieldTelefone.setText(cliente.getTelefone());
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         jTextFieldNome.setText(null);
-        jFormattedTextFieldCPF.setText(null);
+        jTextFieldCPF.setText(null);
         jTextFieldEmail.setText(null);
         jTextFieldTelefone.setText(null);
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         Cliente cliente = new Cliente();
-        cliente.setCpf(jFormattedTextFieldCPF.getText());
+        cliente.setCpf(jTextFieldCPF.getText());
         cliente.setNome(jTextFieldNome.getText());
         cliente.setEmail(jTextFieldEmail.getText());
-        //cliente.setTelefone(jTextFieldTelefone.getText());
+        cliente.setTelefone(jTextFieldTelefone.getText());
+        if (cliente.incluir()){
+             JOptionPane.showMessageDialog(rootPane, "Incluido com sucesso.");
+        }
+        else{
+           JOptionPane.showMessageDialog(rootPane, "Problemas na inclusão");
+        }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
         Cliente cliente = new Cliente();
-        cliente.setCpf(jFormattedTextFieldCPF.getText());
+        cliente.setCpf(jTextFieldCPF.getText());
         cliente.setNome(jTextFieldNome.getText());
         cliente.setEmail(jTextFieldEmail.getText());
-        //cliente.setTelefone(jTextFieldTelefone.getText());
+        cliente.setTelefone(jTextFieldTelefone.getText());
+        if (cliente.alterar()){
+             JOptionPane.showMessageDialog(rootPane, "Alterado com sucesso.");
+        }
+        else{
+           JOptionPane.showMessageDialog(rootPane, "Problemas na alteração");
+        }
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         Cliente cliente = new Cliente();
-        cliente.setCpf(jFormattedTextFieldCPF.getText());
+        cliente.setCpf(jTextFieldCPF.getText());
+        if (cliente.excluir()){
+             JOptionPane.showMessageDialog(rootPane, "Excluido com sucesso.");
+        }
+        else{
+           JOptionPane.showMessageDialog(rootPane, "Problemas na exclusão");
+        }
     }//GEN-LAST:event_jButtonRemoverActionPerformed
 
-    private void jFormattedTextFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCPFActionPerformed
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextFieldCPFActionPerformed
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,7 +354,6 @@ public class TelaCliente extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonRemover;
     private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextFieldCPF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -353,6 +363,7 @@ public class TelaCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JTextField jTextFieldCPF;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldTelefone;
