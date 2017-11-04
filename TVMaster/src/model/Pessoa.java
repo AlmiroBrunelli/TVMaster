@@ -1,14 +1,17 @@
 package model;
 
 public abstract class Pessoa {
-    private String nome, email;
-    private int cpf,telefone;
+    private String nome, email, cpf;
+    private int telefone;
 
-    public Pessoa(String nome, String email, int cpf, int telefone) {
+    public Pessoa(String nome, String email, String cpf, int telefone) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.telefone = telefone;
+    }
+    public Pessoa(){
+        
     }
 
     public String getNome() {
@@ -27,11 +30,11 @@ public abstract class Pessoa {
         this.email = email;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
