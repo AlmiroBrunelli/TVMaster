@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.CardLayout;
+import javax.swing.JPanel;
 
 /**
  *
@@ -132,9 +133,13 @@ public class FrameTest extends javax.swing.JFrame {
         FrameAux t = new FrameAux();
         mainPanel.add(t.getPanel());
         mainPanel.repaint();
-        mainPanel.revalidate();        
+        mainPanel.revalidate();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    public JPanel getPanel(){
+        return mainPanel;
+    }
+    
     /**
      * @param args the command line arguments
      */
