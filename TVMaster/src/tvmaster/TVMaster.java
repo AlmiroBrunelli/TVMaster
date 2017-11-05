@@ -11,19 +11,19 @@ import model.Ilimitado;
 import model.Regular;
 import model.Top;*/
 import javax.swing.UIManager;
-import view.TelaLogin;
+//import view.TelaLogin;
 
 
 public class TVMaster {
 
     public static void main(String[] args) {
-        String tema_padrao = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+        /*String tema_padrao = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
         try {  
               UIManager.setLookAndFeel(tema_padrao);  
             } catch (Exception e) {  
-        }
-        TelaLogin tela = new TelaLogin();
-        tela.setVisible(true);
+        }*/
+    /*    TelaLogin tela = new TelaLogin();
+        tela.setVisible(true);*/
     }
         /*
         // DECLARAÇÃO DOS CANAIS

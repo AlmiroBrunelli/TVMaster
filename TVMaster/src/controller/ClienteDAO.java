@@ -25,8 +25,8 @@ public class ClienteDAO {
             PreparedStatement p = conn.prepareStatement(sql);
             p.setString(1, cliente.getNome());
             p.setString(2, cliente.getEmail());
-            p.setInt(3, Integer.parseInt(cliente.getCpf()));
-            p.setInt(4, cliente.getTelefone());
+            p.setString(3, cliente.getCpf());
+            p.setString(4, cliente.getTelefone());
             resposta = p.executeUpdate();
         } catch(SQLException e) {
         } finally {
@@ -49,9 +49,50 @@ public class ClienteDAO {
                 cliente.setNome(rs.getString("nome"));
                 cliente.setCpf(rs.getString("cpf"));
                 cliente.setEmail(rs.getString("email"));
-                cliente.setTelefone(rs.getInt("telefone"));
+                cliente.setTelefone(rs.getString("telefone"));
             } 
         } catch(SQLException e) {
+        }
+    }
+    
+    public boolean alterarCliente(Cliente cliente) {
+        int resposta = 0;
+        try{
+            String sql = "UPDATE bdmaster.cliente SET nome = ?, email = ?, telefone = ? WHERE cpf = ?";
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement p = conn.prepareStatement(sql);
+            p.setString(1, cliente.getNome());
+            p.setString(2, cliente.getEmail());
+            p.setString(3, cliente.getTelefone());
+            p.setString(4, cliente.getCpf());
+            resposta = p.executeUpdate();
+            System.out.println("Resposta: " + resposta);
+        } catch(SQLException e){
+            
+        } finally {
+            if(resposta > 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    
+    public boolean excluirCliente(Cliente cliente) {
+        int resposta = 0;
+        try{
+            String sql = "DELETE FROM bdmaster.cliente WHERE cpf = ?;";
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement p = conn.prepareStatement(sql);
+            p.setString(1, cliente.getCpf());
+            resposta = p.executeUpdate();
+        } catch(SQLException e){
+        } finally {
+            if(resposta > 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
     
