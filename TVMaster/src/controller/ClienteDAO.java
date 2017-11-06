@@ -43,7 +43,7 @@ public class ClienteDAO {
             String sql = "SELECT * FROM bdmaster.cliente WHERE cpf = ?;";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
-            p.setInt(1, Integer.parseInt(cliente.getCpf()));
+            p.setString(1, cliente.getCpf());
             ResultSet rs = p.executeQuery();
             while(rs.next()) {
                 cliente.setNome(rs.getString("nome"));

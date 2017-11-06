@@ -18,7 +18,7 @@ public abstract class Plano {
         return preco;
     }
 
-    public void setPreco(float preco) {
+    protected void setPreco(float preco) {
         this.preco = preco;
     }
     private Categoria pesquisarCategoria(String nome) {
