@@ -152,9 +152,12 @@ public class TelaCliente2 extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("PESQUISAR CLIENTE");
 
-        jTextFieldCPF.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldCPF.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextFieldCPF.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCPFActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(255, 127, 65));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -306,7 +309,6 @@ public class TelaCliente2 extends javax.swing.JFrame {
 
         jTextCPF.setEditable(false);
         jTextCPF.setBackground(new java.awt.Color(255, 255, 255));
-        jTextCPF.setForeground(new java.awt.Color(0, 0, 0));
         jTextCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextCPFActionPerformed(evt);
@@ -315,11 +317,9 @@ public class TelaCliente2 extends javax.swing.JFrame {
 
         jTextNome.setEditable(false);
         jTextNome.setBackground(new java.awt.Color(255, 255, 255));
-        jTextNome.setForeground(new java.awt.Color(0, 0, 0));
 
         jTextTelefone.setEditable(false);
         jTextTelefone.setBackground(new java.awt.Color(255, 255, 255));
-        jTextTelefone.setForeground(new java.awt.Color(0, 0, 0));
         jTextTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextTelefoneActionPerformed(evt);
@@ -328,7 +328,6 @@ public class TelaCliente2 extends javax.swing.JFrame {
 
         jTextEmail.setEditable(false);
         jTextEmail.setBackground(new java.awt.Color(255, 255, 255));
-        jTextEmail.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabelEditar.setForeground(new java.awt.Color(255, 255, 255));
         jLabelEditar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -430,10 +429,11 @@ public class TelaCliente2 extends javax.swing.JFrame {
                     .addComponent(jTextTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelEditar)
-                    .addComponent(jLabelSalvar1)
-                    .addComponent(jLabelSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelSalvar1)
+                        .addComponent(jLabelSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -522,27 +522,17 @@ public class TelaCliente2 extends javax.swing.JFrame {
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("TELEFONE:");
 
-        jTextCPF1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextCPF1.setForeground(new java.awt.Color(0, 0, 0));
         jTextCPF1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextCPF1ActionPerformed(evt);
             }
         });
 
-        jTextNome1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextNome1.setForeground(new java.awt.Color(0, 0, 0));
-
-        jTextTelefone1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextTelefone1.setForeground(new java.awt.Color(0, 0, 0));
         jTextTelefone1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextTelefone1ActionPerformed(evt);
             }
         });
-
-        jTextEmail1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextEmail1.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabelSalvar2.setForeground(new java.awt.Color(255, 255, 255));
         jLabelSalvar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -684,9 +674,10 @@ public class TelaCliente2 extends javax.swing.JFrame {
             if(cliente.getNome() == null) {
                 JOptionPane.showMessageDialog(rootPane, "O CPF procurado não existe.");
             } else {
+                jTextFieldCPF.setText("");
                 mainPanel.removeAll();
                 mainPanel.add(jPanelResultado);
-                mainPanel.repaint();
+                //mainPanel.repaint();
                 mainPanel.revalidate();
                 jTextNome.setText(cliente.getNome());
                 jTextCPF.setText(cliente.getCpf());
@@ -800,6 +791,10 @@ public class TelaCliente2 extends javax.swing.JFrame {
         mainPanel.repaint();
         mainPanel.revalidate();
     }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jTextFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCPFActionPerformed
 
     public JPanel getPanel(){
         return mainPanel;

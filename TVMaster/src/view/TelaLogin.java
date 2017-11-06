@@ -42,13 +42,17 @@ public class TelaLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TV Master  - Login");
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(900, 600));
         setResizable(false);
 
         mainPanel.setBackground(new java.awt.Color(255, 255, 255));
+        mainPanel.setMaximumSize(new java.awt.Dimension(900, 600));
+        mainPanel.setPreferredSize(new java.awt.Dimension(900, 600));
         mainPanel.setLayout(new java.awt.CardLayout());
 
         jPanel2.setBackground(new java.awt.Color(65, 167, 255));
+        jPanel2.setMaximumSize(new java.awt.Dimension(900, 600));
+        jPanel2.setMinimumSize(new java.awt.Dimension(900, 600));
+        jPanel2.setPreferredSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -62,18 +66,14 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("LOGIN");
 
-        jTextLogin.setBackground(new java.awt.Color(255, 255, 255));
         jTextLogin.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextLogin.setForeground(new java.awt.Color(0, 0, 0));
 
-        jPassword.setBackground(new java.awt.Color(255, 255, 255));
         jPassword.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jPassword.setForeground(new java.awt.Color(0, 0, 0));
 
         jButtonConectar.setBackground(new java.awt.Color(255, 127, 65));
         jButtonConectar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButtonConectar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonConectar.setText("CONECNTAR");
+        jButtonConectar.setText("CONECTAR");
         jButtonConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConectarActionPerformed(evt);
@@ -85,17 +85,18 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(311, 311, 311)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextLogin)
-                    .addComponent(jPassword))
-                .addContainerGap(311, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(365, 365, 365)
-                .addComponent(jButtonConectar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(311, 311, 311)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextLogin)
+                            .addComponent(jPassword)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(365, 365, 365)
+                        .addComponent(jButtonConectar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
