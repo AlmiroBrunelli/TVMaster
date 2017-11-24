@@ -1,5 +1,6 @@
 package model;
 
+
 public class Fatura {
     private float valor;
     private int numero;
@@ -8,7 +9,6 @@ public class Fatura {
 
     public Fatura(float valor, String mes) {
         this.valor = valor;
-        this.mes = mes;
         this.pago = false;
     }
 
@@ -40,12 +40,8 @@ public class Fatura {
         return pago;
     }
 
-    public String setPago() {
-        if(this.pago){
-            return "A fatura já havia sido paga!";
-        }
-        this.pago = true;
-        return "Fatura paga com sucesso!";
+    public void setPago(boolean pago) {
+        this.pago = pago;
     }
     
 }
