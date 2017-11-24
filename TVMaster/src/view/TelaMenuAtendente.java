@@ -223,7 +223,7 @@ public class TelaMenuAtendente extends javax.swing.JFrame {
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
         mainPanel.removeAll();
-        TelaCliente2 t = new TelaCliente2();
+        TelaClientePesquisa t = new TelaClientePesquisa();
         mainPanel.add(t.getPanel());
         mainPanel.repaint();
         mainPanel.revalidate(); 
