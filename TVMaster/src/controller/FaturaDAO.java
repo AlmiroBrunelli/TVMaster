@@ -9,24 +9,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import model.Contrato;
+import model.Fatura;
 
 /**
  *
  * @author Samuel Vieira
  */
-public class ContratoDAO {
-    public boolean incluirContrato(Contrato contrato) {
+public class FaturaDAO {
+    public boolean incluirFatura(Fatura fatura) {
         int resposta = 0;
         try {
-            String sql = "insert into bdmaster.contrato(receptores, endereco, estado, cidade, cpf) values (?, ?, ?, ?);";
+            String sql = "insert into bdmaster.fatura(valor, mes, pago) values (?, ?, ?);";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
-            p.setInt(1, contrato.getReceptores());
-            p.setString(2, contrato.getEndereco());
-            p.setInt(3, contrato.getEstado());
-            p.setString(4, contrato.getCidade());
-            p.setString(5, contrato.getCpf());
+            p.setFloat(1, fatura.getValor());
+            p.setString(2, fatura.getMes());
+            p.setBoolean(3, fatura.isPago());
             resposta = p.executeUpdate();
         } catch(SQLException e) {
         } finally {
@@ -38,35 +36,31 @@ public class ContratoDAO {
         }
     }
     
-    public void pesquisarContrato(Contrato contrato) {
+    public void pesquisarFatura(Fatura fatura) {
         try {
-            String sql = "SELECT * FROM bdmaster.contrato WHERE numero = ?;";
+            String sql = "SELECT * FROM bdmaster.fatura WHERE numero = ?;";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
-            p.setInt(1, contrato.getNumero());
+            p.setInt(1, fatura.getNumero());
             ResultSet rs = p.executeQuery();
             while(rs.next()) {
-                contrato.setNumero(rs.getInt("numero"));
-                contrato.setReceptores(rs.getInt("receptores"));
-                contrato.setCpf(rs.getString("cpf"));
-                contrato.setEndereco(rs.getString("endereco"));
-                contrato.setEstado(rs.getInt("estado"));
-                contrato.setCidade(rs.getString("cidade"));
+                fatura.setValor(rs.getFloat("valor"));
+                fatura.setNumero(rs.getInt("numero"));
+                fatura.setMes(rs.getString("mes"));
+                fatura.setPago(rs.getBoolean("pago"));
             } 
         } catch(SQLException e) {
         }
     }
     
-    public boolean alterarContrato(Contrato contrato) {
+    public boolean alterarFatura(Fatura fatura) {
         int resposta = 0;
         try{
-            String sql = "UPDATE bdmaster.contrato SET endereco = ?, receptores = ?, cidade = ?, estado = ? WHERE cpf = ?";
+            String sql = "UPDATE bdmaster.fatura SET pago = ?, valor = ? WHERE numero = ?";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
-            p.setString(1, contrato.getEndereco());
-            p.setInt(2, contrato.getReceptores());
-            p.setString(3, contrato.getCidade());
-            p.setInt(4, contrato.getEstado());
+            p.setBoolean(1, fatura.isPago());
+            p.setFloat(2, fatura.getValor());
             resposta = p.executeUpdate();
             System.out.println("Resposta: " + resposta);
         } catch(SQLException e){
@@ -80,13 +74,13 @@ public class ContratoDAO {
         }
     }
     
-    public boolean excluirContrato(Contrato contrato) {
+    public boolean excluirFatura(Fatura fatura) {
         int resposta = 0;
         try{
-            String sql = "DELETE FROM bdmaster.contrato WHERE numero = ?;";
+            String sql = "DELETE FROM bdmaster.fatura WHERE numero = ?;";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
-            p.setInt(1, contrato.getNumero());
+            p.setInt(1, fatura.getNumero());
             resposta = p.executeUpdate();
         } catch(SQLException e){
         } finally {
