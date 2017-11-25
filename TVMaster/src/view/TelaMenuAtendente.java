@@ -122,6 +122,11 @@ public class TelaMenuAtendente extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 127, 65));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel5.setPreferredSize(new java.awt.Dimension(150, 150));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -228,6 +233,14 @@ public class TelaMenuAtendente extends javax.swing.JFrame {
         mainPanel.repaint();
         mainPanel.revalidate(); 
     }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        TelaContratoPesquisar t = new TelaContratoPesquisar();
+        mainPanel.removeAll();
+        mainPanel.add(t.getPanel());
+        mainPanel.repaint();
+        mainPanel.revalidate(); 
+    }//GEN-LAST:event_jPanel5MouseClicked
 
     public JPanel getPanel(){
         return mainPanel;
