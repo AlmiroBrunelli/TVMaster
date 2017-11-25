@@ -30,8 +30,6 @@ public class Contrato {
         this.cpf = cpf;
     }
     
-    
-    
     public ArrayList<Chamado> getChamados() {
         return chamados;
     }
@@ -78,6 +76,15 @@ public class Contrato {
 
     public void setPlano(Plano plano) {
         this.plano = plano;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+    
+
+    public void setReceptores(int receptores) {
+        this.receptores = receptores;
     }
     
     public String verificarInadimplencia(){
