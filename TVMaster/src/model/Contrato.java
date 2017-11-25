@@ -4,11 +4,11 @@ import controller.ContratoDAO;
 import java.util.ArrayList;
 
 public class Contrato {
-    int numero, receptores = 0, estado;
-    String endereco, cidade, cpf;
+    private int numero, receptores = 0, estado;
+    private String endereco, cidade, cpf;
     Plano plano;
-    ArrayList <Chamado> chamados = new ArrayList<Chamado>();
-    ArrayList <Fatura> faturas = new ArrayList<Fatura>();
+    private ArrayList <Chamado> chamados = new ArrayList<Chamado>();
+    private ArrayList <Fatura> faturas = new ArrayList<Fatura>();
 
     public Contrato(int numero, int receptores, String endereco, int estado, String cidade, Plano plano) {
         this.numero = numero;

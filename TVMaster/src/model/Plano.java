@@ -1,17 +1,55 @@
 package model;
 
+import controller.PlanoDAO;
 import java.util.ArrayList;
 import static tvmaster.TVMaster.format;
 
-public abstract class Plano {
-    private final float desconto;
+public class Plano {
+    private float desconto, preco;
     protected ArrayList<Categoria> categorias;
-    private float preco;
-    private int tipo;
+    private String nome;
+    private int tipo, quantidadeCategorias;
 
-    public Plano(float preco, final float desconto) {
-        this.preco = preco;
+    public Plano(float desconto, int quantidadeCategorias, int tipo, String nome) {
         this.desconto = desconto;
+        this.quantidadeCategorias = quantidadeCategorias;
+        this.tipo = tipo;
+        this.nome = nome;
+    }
+
+    public Plano() {
+    }
+
+    public int getQuantidadeCategorias() {
+        return quantidadeCategorias;
+    }
+
+    public void setQuantidadeCategorias(int quantidadeCategorias) {
+        this.quantidadeCategorias = quantidadeCategorias;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public float getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(float desconto) {
+        this.desconto = desconto;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
     }
 
     public float getPreco() {
@@ -31,7 +69,7 @@ public abstract class Plano {
     }
     
     public boolean adicionarCategoria(Categoria categoria) {
-        if(pesquisarCategoria(categoria.getNome()) == null && categorias.size() < 3){
+        if(pesquisarCategoria(categoria.getNome()) == null && categorias.size() < quantidadeCategorias){
             categorias.add(categoria);
             setPreco(calcularPreco());
             return true;
@@ -57,5 +95,15 @@ public abstract class Plano {
         // retirar format depois dos testes
         System.out.println("Desconto: " + format((totalPlano * desconto)));
         return (totalPlano - (totalPlano * desconto));
+    }
+    
+    public void pesquisar(int numeroContrato){
+        PlanoDAO planoDAO = new PlanoDAO();
+        planoDAO.pesquisarPlano(numeroContrato, this);
+    }
+    
+    public ArrayList<Plano> listar(){
+        PlanoDAO planoDAO = new PlanoDAO();
+        return planoDAO.listarPlanos();
     }
 }

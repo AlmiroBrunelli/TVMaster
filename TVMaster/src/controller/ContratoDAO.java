@@ -43,6 +43,7 @@ public class ContratoDAO {
             String sql = "SELECT * FROM bdmaster.contrato WHERE numero = ?;";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
+            System.out.println(contrato.getNumero());
             p.setInt(1, contrato.getNumero());
             ResultSet rs = p.executeQuery();
             while(rs.next()) {

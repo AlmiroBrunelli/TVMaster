@@ -48,7 +48,6 @@ public class TelaContratoPesquisar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(900, 600));
         setMinimumSize(new java.awt.Dimension(900, 600));
-        setPreferredSize(new java.awt.Dimension(900, 600));
         setResizable(false);
 
         mainPanel.setMaximumSize(new java.awt.Dimension(900, 600));
@@ -244,7 +243,6 @@ public class TelaContratoPesquisar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCPFActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         if(jTextFieldCPF.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Digite um número de contrato válido.");
         } else {

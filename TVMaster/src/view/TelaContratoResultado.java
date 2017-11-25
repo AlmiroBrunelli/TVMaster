@@ -5,10 +5,13 @@
  */
 package view;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.Categoria;
 import model.Cliente;
 import model.Contrato;
+import model.Plano;
 
 /**
  *
@@ -66,17 +69,19 @@ public class TelaContratoResultado extends javax.swing.JFrame {
         jComboBoxPlano = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Contrato - Resultado da pesquisa");
         setMaximumSize(new java.awt.Dimension(900, 600));
         setMinimumSize(new java.awt.Dimension(900, 600));
-        setPreferredSize(new java.awt.Dimension(900, 600));
         setResizable(false);
 
         mainPanel.setMaximumSize(new java.awt.Dimension(900, 600));
         mainPanel.setMinimumSize(new java.awt.Dimension(900, 600));
+        mainPanel.setName(""); // NOI18N
         mainPanel.setPreferredSize(new java.awt.Dimension(900, 600));
         mainPanel.setLayout(new java.awt.CardLayout());
 
         jPanelResultado.setBackground(new java.awt.Color(65, 167, 255));
+        jPanelResultado.setName(""); // NOI18N
         jPanelResultado.setPreferredSize(new java.awt.Dimension(900, 600));
 
         jPanel4.setBackground(new java.awt.Color(255, 127, 65));
@@ -221,7 +226,7 @@ public class TelaContratoResultado extends javax.swing.JFrame {
         jButtonExcluir.setBackground(new java.awt.Color(255, 127, 65));
         jButtonExcluir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButtonExcluir.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonExcluir.setText("EXCLUIR");
+        jButtonExcluir.setText("CANCELAR");
         jButtonExcluir.setMaximumSize(new java.awt.Dimension(145, 40));
         jButtonExcluir.setMinimumSize(new java.awt.Dimension(145, 40));
         jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -400,8 +405,8 @@ public class TelaContratoResultado extends javax.swing.JFrame {
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         int option = JOptionPane.showConfirmDialog(rootPane,
                         "Você tem certeza que deseja cancelar o contrato?",
-                        "Confirmar cancelamento", JOptionPane.YES_NO_OPTION,
-                        JOptionPane.WARNING_MESSAGE);
+                        "Confirmar cancelamento de contrato", 
+                        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         System.out.println(option);
         if(option == 0){
             Cliente cliente = new Cliente();
@@ -424,6 +429,7 @@ public class TelaContratoResultado extends javax.swing.JFrame {
     private void jButtonEditarSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarSalvarActionPerformed
         if(salvar == true){
             salvar = false;
+            jButtonEditarSalvar.setText("SALVAR");
             jTextContrato.setEnabled(true);
             jTextReceptores.setEnabled(true);
             jTextCidade.setEnabled(true);
@@ -431,6 +437,9 @@ public class TelaContratoResultado extends javax.swing.JFrame {
             jComboBoxPlano.setEnabled(true);
             //contrato.plano.
             //jComboBoxPlano
+        } else {
+            salvar = true;
+            jButtonEditarSalvar.setText("EDITAR");
         }
     }//GEN-LAST:event_jButtonEditarSalvarActionPerformed
 
@@ -439,8 +448,20 @@ public class TelaContratoResultado extends javax.swing.JFrame {
     }
     
     public void setTextFields(){
-        //Cliente cliente = new Cliente();
-        
+        Cliente cliente = new Cliente();
+        cliente.setCpf(contrato.getCpf());
+        cliente.pesquisar();
+        Plano plano = new Plano();
+        plano.pesquisar(contrato.getNumero());
+        //contrato.setPlano(plano);
+        ArrayList<Categoria> categorias;
+        ArrayList<Plano> planos = plano.listar();
+        for(Plano p : planos){
+            jComboBoxPlano.addItem(p.getNome());
+            if(contrato.getPlano().getNome().equals(p.getNome())){
+                jComboBoxPlano.setSelectedItem(p);
+            }
+        }
     }
     
     /**
