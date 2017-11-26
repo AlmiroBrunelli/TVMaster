@@ -405,6 +405,8 @@ public class TelaClienteResultado extends javax.swing.JFrame {
     }
     
     public void setTextFields(){
+        jLabelSalvar.setVisible(false);
+        jLabelSalvar1.setVisible(false);
         jTextNome.setText(cliente.getNome());
         jTextCPF.setText(cliente.getCpf());
         jTextTelefone.setText(cliente.getTelefone());

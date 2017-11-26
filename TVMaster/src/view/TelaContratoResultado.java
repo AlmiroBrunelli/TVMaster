@@ -261,9 +261,6 @@ public class TelaContratoResultado extends javax.swing.JFrame {
                         .addGap(84, 84, 84)
                         .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelResultadoLayout.createSequentialGroup()
-                                .addGap(106, 106, 106)
-                                .addComponent(jLabel13))
-                            .addGroup(jPanelResultadoLayout.createSequentialGroup()
                                 .addComponent(jLabel22)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -302,8 +299,13 @@ public class TelaContratoResultado extends javax.swing.JFrame {
                         .addContainerGap(94, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResultadoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel12)
-                        .addGap(25, 25, 25))))
+                        .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResultadoLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(25, 25, 25))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResultadoLayout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(158, 158, 158))))))
         );
         jPanelResultadoLayout.setVerticalGroup(
             jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,9 +315,9 @@ public class TelaContratoResultado extends javax.swing.JFrame {
             .addGroup(jPanelResultadoLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel12)
-                .addGap(52, 52, 52)
+                .addGap(53, 53, 53)
                 .addComponent(jLabel13)
-                .addGap(39, 39, 39)
+                .addGap(38, 38, 38)
                 .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(jLabel14)
@@ -373,6 +375,7 @@ public class TelaContratoResultado extends javax.swing.JFrame {
         mainPanel.add(t.getPanel());
         mainPanel.repaint();
         mainPanel.revalidate();
+        t.setTextFields();
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
@@ -486,7 +489,6 @@ public class TelaContratoResultado extends javax.swing.JFrame {
         for(Plano p : planos){
             jComboBoxPlano.addItem(p.getNome());
             if(plano.getTipo() == p.getTipo()){
-                System.out.println("Plano: "+plano.getNome()+"p: "+ p.getNome());
                 jComboBoxPlano.setSelectedItem(p.getNome());
             }
         }
