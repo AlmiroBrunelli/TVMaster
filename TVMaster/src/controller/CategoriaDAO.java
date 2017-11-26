@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Categoria;
 
 /**
@@ -84,6 +85,25 @@ public class CategoriaDAO {
                 return false;
             }
         }
+    }
+    
+    public ArrayList<Categoria> listarCategoriasContrato(int numeroContrato){
+        try{
+        ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+        String sql = "SELECT categoria.nome, categoria.preco from bdmaster.categoria, "
+                + "bdmaster.plano_categoria WHERE fk_planocontrato = '1' AND"
+                + " fk_idcategoria = idCategoria;";
+        Connection conn = ConnectionFactory.getConnection();
+        PreparedStatement p = conn.prepareStatement(sql);
+        ResultSet rs = p.executeQuery();
+        while(rs.next()){
+            Categoria categoria = new Categoria(rs.getString("nome"));
+            categorias.add(categoria);
+        }
+        return categorias;
+        } catch(SQLException e){
+        }
+        return null;
     }
     
 }

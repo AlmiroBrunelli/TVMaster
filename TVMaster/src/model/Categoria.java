@@ -1,5 +1,6 @@
 package model;
 
+import controller.CategoriaDAO;
 import java.util.ArrayList;
 
 public class Categoria {
@@ -7,6 +8,13 @@ public class Categoria {
     private float preco;
     private ArrayList<Canal> canais;
 
+    public Categoria() {
+    }
+    
+    public Categoria(String nome){
+        this.nome = nome;
+    }
+    
     public Categoria(String nome, ArrayList<Canal> canais){
         this.nome = nome;
         this.canais = canais;
@@ -59,6 +67,11 @@ public class Categoria {
             return true;
         }
         return false;
+    }
+    
+    public ArrayList<Categoria> listar(int numeroContrato){
+        CategoriaDAO categoriaDAO = new CategoriaDAO();
+        return categoriaDAO.listarCategoriasContrato(numeroContrato);
     }
     
 }
