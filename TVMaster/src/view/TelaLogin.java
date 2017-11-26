@@ -5,7 +5,9 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.Funcionario;
 
 /**
  *
@@ -134,12 +136,21 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConectarActionPerformed
-        // TODO add your handling code here:
-        mainPanel.removeAll();
-        TelaMenuAtendente t = new TelaMenuAtendente();
-        mainPanel.add(t.getPanel());
-        mainPanel.repaint();
-        mainPanel.revalidate(); 
+        if(jTextLogin.getText().isEmpty() || String.copyValueOf(jPassword.getPassword()).isEmpty()){
+            JOptionPane.showMessageDialog(rootPane, "Todos os campos são necessários!");
+        } else {
+            Funcionario funcionario =  new Funcionario(Integer.parseInt(jTextLogin.getText()),
+                                        String.copyValueOf(jPassword.getPassword()));
+            if(funcionario.validar()){
+                mainPanel.removeAll();
+                TelaMenuAtendente t = new TelaMenuAtendente();
+                mainPanel.add(t.getPanel());
+                mainPanel.repaint();
+                mainPanel.revalidate(); 
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Usuário ou senha incorretos!");
+            }
+        }
     }//GEN-LAST:event_jButtonConectarActionPerformed
     
     public JPanel getPanel(){
