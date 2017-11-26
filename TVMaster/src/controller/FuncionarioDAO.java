@@ -111,9 +111,9 @@ public class FuncionarioDAO {
             p.setInt(1, funcionario.getMatricula());
             ResultSet rs = p.executeQuery();
             while(rs.next()){
-                funcionario.setSenha(rs.getString("senha"));
+                func.setSenha(rs.getString("senha"));
             }
-            if(funcionario.getSenha().equals(funcionario.getSenha())){
+            if(funcionario.getSenha().equals(func.getSenha())){
                 return true;
             }
         } catch(SQLException e) {
