@@ -37,6 +37,7 @@ public class TelaClientePesquisa extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldCPF = new javax.swing.JTextField();
@@ -83,12 +84,24 @@ public class TelaClientePesquisa extends javax.swing.JFrame {
         jLabel6.setText("PESQUISAR CLIENTE");
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jLabel7.setFont(new java.awt.Font("Wide Latin", 0, 26)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("<");
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(55, 55, 55))
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -98,7 +111,9 @@ public class TelaClientePesquisa extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel7))
                 .addGap(80, 80, 80)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
@@ -247,6 +262,14 @@ public class TelaClientePesquisa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCPFActionPerformed
 
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        TelaMenuAtendente t = new TelaMenuAtendente();
+        mainPanel.removeAll();
+        mainPanel.add(t.getPanel());
+        mainPanel.repaint();
+        mainPanel.revalidate();
+    }//GEN-LAST:event_jLabel7MouseClicked
+
     public JPanel getPanel(){
         return mainPanel;
     }
@@ -295,6 +318,7 @@ public class TelaClientePesquisa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelPesquisar;
     private javax.swing.JTextField jTextFieldCPF;

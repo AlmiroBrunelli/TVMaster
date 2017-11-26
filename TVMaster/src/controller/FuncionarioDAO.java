@@ -102,4 +102,23 @@ public class FuncionarioDAO {
         }
     }
     
+    public boolean validarSenha(Funcionario funcionario){
+        try {
+            Funcionario func = new Funcionario();
+            String sql = "SELECT * FROM bdmaster.funcionario WHERE matricula = ?;";
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement p = conn.prepareStatement(sql);
+            p.setInt(1, funcionario.getMatricula());
+            ResultSet rs = p.executeQuery();
+            while(rs.next()){
+                func.setSenha(rs.getString("senha"));
+            }
+            if(funcionario.getSenha().equals(func.getSenha())){
+                return true;
+            }
+        } catch(SQLException e) {
+        }
+        return false;
+    }
+    
 }

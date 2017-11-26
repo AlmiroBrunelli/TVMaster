@@ -433,7 +433,7 @@ public class TelaContratoResultado extends javax.swing.JFrame {
         if(salvar == true){
             salvar = false;
             jButtonEditarSalvar.setText("SALVAR");
-            jTextContrato.setEnabled(true);
+            //jTextContrato.setEnabled(true);
             jTextReceptores.setEnabled(true);
             jTextCidade.setEnabled(true);
             jTextEndereco.setEnabled(true);
@@ -449,7 +449,7 @@ public class TelaContratoResultado extends javax.swing.JFrame {
                 if(contrato.atualizar()){
                     salvar = true;
                     jButtonEditarSalvar.setText("EDITAR");
-                    jTextContrato.setEnabled(false);
+                    //jTextContrato.setEnabled(false);
                     jTextReceptores.setEnabled(false);
                     jTextCidade.setEnabled(false);
                     jTextEndereco.setEnabled(false);
