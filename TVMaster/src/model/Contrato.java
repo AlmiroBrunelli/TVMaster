@@ -4,7 +4,7 @@ import controller.ContratoDAO;
 import java.util.ArrayList;
 
 public class Contrato {
-    private int numero, receptores = 0, estado;
+    private int numero, receptores = 0, estado = 0;
     private String endereco, cidade, cpf;
     private Plano plano;
     private ArrayList <Chamado> chamados = new ArrayList<Chamado>();
@@ -164,6 +164,11 @@ public class Contrato {
         return null;
     }
     
+    public boolean incluir(){
+        ContratoDAO contratoDAO = new ContratoDAO();
+        return contratoDAO.incluirContrato(this);
+    }
+    
     public void pesquisar(){
         ContratoDAO contratoDAO = new ContratoDAO();
         contratoDAO.pesquisarContrato(this);
@@ -179,4 +184,8 @@ public class Contrato {
         return contratoDAO.alterarEstadoContrato(this);
     }
     
+    public void pesquisarNumero(){
+        ContratoDAO contratoDAO = new ContratoDAO();
+        contratoDAO.pesquisarNumeroContrato(this);
+    }
 }

@@ -227,6 +227,7 @@ public class TelaContratoPesquisar extends javax.swing.JFrame {
         mainPanel.add(t.getPanel());
         mainPanel.repaint();
         mainPanel.revalidate();
+        t.setTextFields();
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked

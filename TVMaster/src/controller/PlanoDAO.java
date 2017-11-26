@@ -11,11 +11,12 @@ public class PlanoDAO {
     public boolean incluirPlano(Plano plano){
         int resposta = 0;
         try{
-            String sql = "insert into bdmaster.canal(nome, quantidadeCategorias) values(?, ?);";
+            String sql = "insert into bdmaster.plano(nome, quantidadeCategorias, desconto) values(?, ?, ?);";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
             p.setString(1, plano.getNome());
             p.setString(2, Integer.toString(plano.getQuantidadeCategorias()));
+            p.setFloat(3, plano.getDesconto());
             resposta = p.executeUpdate();
         } catch(SQLException e){  
             throw new RuntimeException(e);
@@ -75,6 +76,28 @@ public class PlanoDAO {
             p.setInt(2, numeroContrato);
             resposta = p.executeUpdate();
         } catch(SQLException e){
+        } finally {
+            if(resposta > 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    
+    public boolean inserirPlanoContrato(int numeroContrato, Plano plano){
+        int resposta = 0;
+        try{
+            String sql =  "INSERT INTO bdmaster.plano_contrato(fk_tipo, fk_plano_contrato)"
+                    + "values((SELECT plano.idplano from bdmaster.plano WHERE plano.nome = ?), ?);";
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement p = conn.prepareStatement(sql);
+            p.setString(1, plano.getNome());
+            System.out.println("numero contrato:"+numeroContrato);
+            p.setInt(2, numeroContrato);
+            resposta = p.executeUpdate();
+        } catch(SQLException e){
+            throw new RuntimeException(e);
         } finally {
             if(resposta > 0){
                 return true;
