@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Contrato {
     private int numero, receptores = 0, estado;
     private String endereco, cidade, cpf;
-    Plano plano;
+    private Plano plano;
     private ArrayList <Chamado> chamados = new ArrayList<Chamado>();
     private ArrayList <Fatura> faturas = new ArrayList<Fatura>();
 
@@ -28,6 +28,7 @@ public class Contrato {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+        System.out.println(cpf);
     }
     
     public ArrayList<Chamado> getChamados() {
@@ -166,6 +167,16 @@ public class Contrato {
     public void pesquisar(){
         ContratoDAO contratoDAO = new ContratoDAO();
         contratoDAO.pesquisarContrato(this);
+    }
+    
+    public boolean atualizar(){
+        ContratoDAO contratoDAO = new ContratoDAO();
+        return contratoDAO.alterarContrato(this);
+    }
+    
+    public boolean alterarEstado(){
+        ContratoDAO contratoDAO = new ContratoDAO();
+        return contratoDAO.alterarEstadoContrato(this);
     }
     
 }

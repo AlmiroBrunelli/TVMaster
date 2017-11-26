@@ -64,13 +64,12 @@ public class TelaContratoResultado extends javax.swing.JFrame {
         jTextContrato = new javax.swing.JTextField();
         jTextEndereco = new javax.swing.JTextField();
         jTextCidade = new javax.swing.JTextField();
-        jButtonExcluir = new javax.swing.JButton();
+        jButtonEstado = new javax.swing.JButton();
         jButtonEditarSalvar = new javax.swing.JButton();
         jComboBoxPlano = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contrato - Resultado da pesquisa");
-        setMaximumSize(new java.awt.Dimension(900, 600));
         setMinimumSize(new java.awt.Dimension(900, 600));
         setResizable(false);
 
@@ -223,15 +222,15 @@ public class TelaContratoResultado extends javax.swing.JFrame {
         jTextCidade.setBackground(new java.awt.Color(255, 255, 255));
         jTextCidade.setEnabled(false);
 
-        jButtonExcluir.setBackground(new java.awt.Color(255, 127, 65));
-        jButtonExcluir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButtonExcluir.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonExcluir.setText("CANCELAR");
-        jButtonExcluir.setMaximumSize(new java.awt.Dimension(145, 40));
-        jButtonExcluir.setMinimumSize(new java.awt.Dimension(145, 40));
-        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstado.setBackground(new java.awt.Color(255, 127, 65));
+        jButtonEstado.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButtonEstado.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEstado.setText("DESATIVAR");
+        jButtonEstado.setMaximumSize(new java.awt.Dimension(145, 40));
+        jButtonEstado.setMinimumSize(new java.awt.Dimension(145, 40));
+        jButtonEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonExcluirActionPerformed(evt);
+                jButtonEstadoActionPerformed(evt);
             }
         });
 
@@ -284,7 +283,7 @@ public class TelaContratoResultado extends javax.swing.JFrame {
                                         .addComponent(jFormattedCPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanelResultadoLayout.createSequentialGroup()
-                                    .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButtonEditarSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanelResultadoLayout.createSequentialGroup()
@@ -342,7 +341,7 @@ public class TelaContratoResultado extends javax.swing.JFrame {
                     .addComponent(jTextCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEditarSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -402,29 +401,33 @@ public class TelaContratoResultado extends javax.swing.JFrame {
         mainPanel.revalidate();
     }//GEN-LAST:event_jLabel7MouseClicked
 
-    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+    private void jButtonEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstadoActionPerformed
         int option = JOptionPane.showConfirmDialog(rootPane,
-                        "Você tem certeza que deseja cancelar o contrato?",
-                        "Confirmar cancelamento de contrato", 
+                        "Você tem certeza que deseja alterar o estado do contrato?",
+                        "Confirmar alteração do estado do contrato", 
                         JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        System.out.println(option);
         if(option == 0){
-            Cliente cliente = new Cliente();
-            cliente.setCpf(jFormattedCPF.getText());
-            if (cliente.excluir()){
-                JOptionPane.showMessageDialog(rootPane, "Excluido com sucesso.");
+            if (contrato.getEstado() != 1){
+                contrato.cancelarContrato();
+            } else {
+                contrato.reativarContrato();
             }
-            else{
-                JOptionPane.showMessageDialog(rootPane, "Problemas na exclusão!",
+            if (contrato.alterarEstado()){
+                if(contrato.getEstado() == 1){
+                    jButtonEstado.setText("ATIVAR");
+                    jButtonEditarSalvar.setEnabled(false);
+                    JOptionPane.showMessageDialog(rootPane, "Contrato desativado com sucesso.");
+                } else {
+                    jButtonEstado.setText("DESATIVAR");
+                    jButtonEditarSalvar.setEnabled(true);
+                    JOptionPane.showMessageDialog(rootPane, "Contrato ativado com sucesso.");
+                }
+            } else{
+                JOptionPane.showMessageDialog(rootPane, "Problemas na alteração do estado do contrato!",
                 "Erro!", JOptionPane.ERROR_MESSAGE);
             }
-            mainPanel.removeAll();
-            TelaClientePesquisa t = new TelaClientePesquisa();
-            mainPanel.add(t.getPanel());
-            mainPanel.repaint();
-            mainPanel.revalidate();
         }
-    }//GEN-LAST:event_jButtonExcluirActionPerformed
+    }//GEN-LAST:event_jButtonEstadoActionPerformed
 
     private void jButtonEditarSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarSalvarActionPerformed
         if(salvar == true){
@@ -435,11 +438,31 @@ public class TelaContratoResultado extends javax.swing.JFrame {
             jTextCidade.setEnabled(true);
             jTextEndereco.setEnabled(true);
             jComboBoxPlano.setEnabled(true);
-            //contrato.plano.
-            //jComboBoxPlano
         } else {
-            salvar = true;
-            jButtonEditarSalvar.setText("EDITAR");
+            contrato.setReceptores(Integer.parseInt(jTextReceptores.getText()));
+            contrato.setEndereco(jTextEndereco.getText());
+            contrato.setCidade(jTextCidade.getText());
+            Plano plano = new Plano();
+            System.out.println("ComboBox: "+jComboBoxPlano.getSelectedIndex());
+            plano.setNome((String) jComboBoxPlano.getSelectedItem());
+            if(plano.alterarTipo(contrato.getNumero())){
+                if(contrato.atualizar()){
+                    salvar = true;
+                    jButtonEditarSalvar.setText("EDITAR");
+                    jTextContrato.setEnabled(false);
+                    jTextReceptores.setEnabled(false);
+                    jTextCidade.setEnabled(false);
+                    jTextEndereco.setEnabled(false);
+                    jComboBoxPlano.setEnabled(false);
+                    JOptionPane.showMessageDialog(rootPane, "Atualizado com sucesso.");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Problemas na atualização!",
+                    "Erro!", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Não foi possível alterar o tipo de plano!",
+                    "Erro!", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButtonEditarSalvarActionPerformed
 
@@ -448,20 +471,31 @@ public class TelaContratoResultado extends javax.swing.JFrame {
     }
     
     public void setTextFields(){
+        if(contrato.getEstado() == 1){
+            jButtonEstado.setText("ATIVAR");
+            jButtonEditarSalvar.setEnabled(false);
+        }
         Cliente cliente = new Cliente();
         cliente.setCpf(contrato.getCpf());
         cliente.pesquisar();
         Plano plano = new Plano();
         plano.pesquisar(contrato.getNumero());
         //contrato.setPlano(plano);
-        ArrayList<Categoria> categorias;
+        //ArrayList<Categoria> categorias;
         ArrayList<Plano> planos = plano.listar();
         for(Plano p : planos){
             jComboBoxPlano.addItem(p.getNome());
-            if(contrato.getPlano().getNome().equals(p.getNome())){
-                jComboBoxPlano.setSelectedItem(p);
+            if(plano.getTipo() == p.getTipo()){
+                System.out.println("Plano: "+plano.getNome()+"p: "+ p.getNome());
+                jComboBoxPlano.setSelectedItem(p.getNome());
             }
         }
+        jTextNome.setText(cliente.getNome());
+        jFormattedCPF.setText(cliente.getCpf());
+        jTextContrato.setText(Integer.toString(contrato.getNumero()));
+        jTextReceptores.setText(Integer.toString(contrato.getReceptores()));
+        jTextEndereco.setText(contrato.getEndereco());
+        jTextCidade.setText(contrato.getCidade());
     }
     
     /**
@@ -501,7 +535,7 @@ public class TelaContratoResultado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEditarSalvar;
-    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonEstado;
     private javax.swing.JComboBox<String> jComboBoxPlano;
     private javax.swing.JFormattedTextField jFormattedCPF;
     private javax.swing.JLabel jLabel10;

@@ -41,7 +41,7 @@ public class TelaContratoPesquisar extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldCPF = new javax.swing.JTextField();
+        jTextFieldContrato = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
@@ -134,10 +134,10 @@ public class TelaContratoPesquisar extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("PESQUISAR CONTRATO");
 
-        jTextFieldCPF.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextFieldCPF.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldContrato.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jTextFieldContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCPFActionPerformed(evt);
+                jTextFieldContratoActionPerformed(evt);
             }
         });
 
@@ -174,7 +174,7 @@ public class TelaContratoPesquisar extends javax.swing.JFrame {
                             .addGroup(jPanelPesquisarLayout.createSequentialGroup()
                                 .addGroup(jPanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(185, Short.MAX_VALUE))))
                     .addGroup(jPanelPesquisarLayout.createSequentialGroup()
                         .addGap(252, 252, 252)
@@ -198,7 +198,7 @@ public class TelaContratoPesquisar extends javax.swing.JFrame {
                 .addGap(68, 68, 68)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -238,21 +238,21 @@ public class TelaContratoPesquisar extends javax.swing.JFrame {
         mainPanel.revalidate();
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jTextFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPFActionPerformed
+    private void jTextFieldContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldContratoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCPFActionPerformed
+    }//GEN-LAST:event_jTextFieldContratoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(jTextFieldCPF.getText().isEmpty()){
+        if(jTextFieldContrato.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Digite um número de contrato válido.");
         } else {
             Contrato contrato = new Contrato();
-            contrato.setCpf(jTextFieldCPF.getText());
+            contrato.setNumero(Integer.parseInt(jTextFieldContrato.getText()));
             contrato.pesquisar();
             if(contrato.getEndereco() == null) {
                 JOptionPane.showMessageDialog(rootPane, "O número de contrato procurado não existe.");
             } else {
-                jTextFieldCPF.setText("");
+                jTextFieldContrato.setText("");
                 mainPanel.removeAll();
                 TelaContratoResultado t = new TelaContratoResultado(contrato);
                 mainPanel.add(t.getPanel());
@@ -321,7 +321,7 @@ public class TelaContratoPesquisar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelPesquisar;
-    private javax.swing.JTextField jTextFieldCPF;
+    private javax.swing.JTextField jTextFieldContrato;
     private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -106,4 +106,9 @@ public class Plano {
         PlanoDAO planoDAO = new PlanoDAO();
         return planoDAO.listarPlanos();
     }
+    
+    public boolean alterarTipo(int numeroContrato){
+        PlanoDAO planoDAO = new PlanoDAO();
+        return planoDAO.alterarTipoPlano(numeroContrato, this);
+    }
 }

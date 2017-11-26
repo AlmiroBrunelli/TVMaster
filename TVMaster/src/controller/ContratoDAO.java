@@ -40,18 +40,17 @@ public class ContratoDAO {
     
     public void pesquisarContrato(Contrato contrato) {
         try {
-            String sql = "SELECT * FROM bdmaster.contrato WHERE numero = ?;";
+            String sql = "SELECT * FROM bdmaster.contrato WHERE numero = ?";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
-            System.out.println(contrato.getNumero());
             p.setInt(1, contrato.getNumero());
             ResultSet rs = p.executeQuery();
             while(rs.next()) {
-                contrato.setNumero(rs.getInt("numero"));
                 contrato.setReceptores(rs.getInt("receptores"));
-                contrato.setCpf(rs.getString("cpf"));
-                contrato.setEndereco(rs.getString("endereco"));
-                contrato.setEstado(rs.getInt("estado"));
+                contrato.setCpf(rs.getString("fk_cliente"));
+                contrato.setEndereco(rs.getString("rua"));
+                System.out.println("fasfs");
+                contrato.setEstado(rs.getInt("estadoContrato"));
                 contrato.setCidade(rs.getString("cidade"));
             } 
         } catch(SQLException e) {
@@ -61,17 +60,15 @@ public class ContratoDAO {
     public boolean alterarContrato(Contrato contrato) {
         int resposta = 0;
         try{
-            String sql = "UPDATE bdmaster.contrato SET endereco = ?, receptores = ?, cidade = ?, estado = ? WHERE cpf = ?";
+            String sql = "UPDATE bdmaster.contrato SET rua = ?, receptores = ?, cidade = ? WHERE fk_cliente = ?;";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
             p.setString(1, contrato.getEndereco());
             p.setInt(2, contrato.getReceptores());
             p.setString(3, contrato.getCidade());
-            p.setInt(4, contrato.getEstado());
+            p.setString(4, contrato.getCpf());
             resposta = p.executeUpdate();
-            System.out.println("Resposta: " + resposta);
         } catch(SQLException e){
-            
         } finally {
             if(resposta > 0){
                 return true;
@@ -81,15 +78,17 @@ public class ContratoDAO {
         }
     }
     
-    public boolean excluirContrato(Contrato contrato) {
+    public boolean alterarEstadoContrato(Contrato contrato) {
         int resposta = 0;
         try{
-            String sql = "DELETE FROM bdmaster.contrato WHERE numero = ?;";
+            String sql = "UPDATE bdmaster.contrato SET estadoContrato = ? WHERE fk_cliente = ?;";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
-            p.setInt(1, contrato.getNumero());
+            p.setInt(1, contrato.getEstado());
+            p.setString(2, contrato.getCpf());
             resposta = p.executeUpdate();
         } catch(SQLException e){
+            throw new RuntimeException(e);
         } finally {
             if(resposta > 0) {
                 return true;
