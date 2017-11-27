@@ -446,7 +446,6 @@ public class TelaContratoResultado extends javax.swing.JFrame {
             contrato.setEndereco(jTextEndereco.getText());
             contrato.setCidade(jTextCidade.getText());
             Plano plano = new Plano();
-            System.out.println("ComboBox: "+jComboBoxPlano.getSelectedIndex());
             plano.setNome((String) jComboBoxPlano.getSelectedItem());
             if(plano.alterarTipo(contrato.getNumero())){
                 if(contrato.atualizar()){

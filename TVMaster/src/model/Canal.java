@@ -1,5 +1,8 @@
 package model;
 
+import controller.CanalDAO;
+import java.util.ArrayList;
+
 public class Canal {
     private String nome;
     private float preco;
@@ -9,6 +12,9 @@ public class Canal {
         this.nome = nome;
         this.preco = preco;
         this.numero = numero;
+    }
+
+    public Canal() {
     }
 
     public String getNome() {
@@ -33,6 +39,16 @@ public class Canal {
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+    
+    public ArrayList<Canal> pesquisarCategoria(String nomeCategoria){
+        CanalDAO canalDAO = new CanalDAO();
+        return canalDAO.pesquisarCanaisCategoria(nomeCategoria);
+    }
+    
+    public boolean excluirCanais(int idCategoria){
+        CanalDAO canalDAO = new CanalDAO();
+        return canalDAO.excluirCanaisCategoria(idCategoria);
     }
     
 }
