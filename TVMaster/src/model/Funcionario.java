@@ -57,4 +57,24 @@ public class Funcionario extends Pessoa{
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         return funcionarioDAO.validarSenha(this);
     }
+    
+    public boolean incluir(){
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        return funcionarioDAO.incluirFuncionario(this);
+    }
+    
+    public void pesquisar(){
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        funcionarioDAO.pesquisarFuncionario(this);
+    }
+    
+    public boolean excluir(){
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        return funcionarioDAO.excluirFuncionario(this);
+    }
+    
+    public boolean alterar(){
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        return funcionarioDAO.alterarFuncionario(this);
+    }
 }

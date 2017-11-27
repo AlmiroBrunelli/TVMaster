@@ -7,23 +7,22 @@ package view;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import model.Cliente;
+import model.Funcionario;
 
 /**
  *
- * @author participante
+ * @author Brunelli
  */
-public class TelaClienteResultado extends javax.swing.JFrame {
-    private Cliente cliente;
+public class TelaFuncionarioResultado extends javax.swing.JFrame {
+    private Funcionario funcionario;
     /**
-     * Creates new form TelaClienteResultado
+     * Creates new form TelaFuncionarioResultado
      */
-    public TelaClienteResultado(Cliente cliente) {
+    public TelaFuncionarioResultado(Funcionario funcionario) {
         initComponents();
-        this.cliente = cliente;
+        this.funcionario = funcionario;
     }
-
-    private TelaClienteResultado() {
+    public TelaFuncionarioResultado() {
         initComponents();
     }
 
@@ -56,11 +55,12 @@ public class TelaClienteResultado extends javax.swing.JFrame {
         jLabelEditar = new javax.swing.JLabel();
         jLabelSalvar = new javax.swing.JLabel();
         jLabelSalvar1 = new javax.swing.JLabel();
+        jTextMatricula = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jTextTipo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(900, 600));
-        setMinimumSize(new java.awt.Dimension(900, 600));
-        setResizable(false);
 
         mainPanel.setMaximumSize(new java.awt.Dimension(900, 600));
         mainPanel.setMinimumSize(new java.awt.Dimension(900, 600));
@@ -80,7 +80,7 @@ public class TelaClienteResultado extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("NOVO CLIENTE");
+        jLabel9.setText("NOVO FUNCIONÁRIO");
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -91,7 +91,7 @@ public class TelaClienteResultado extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("PESQUISAR CLIENTE");
+        jLabel10.setText("PESQUISAR FUNCIONÁRIO");
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -210,13 +210,27 @@ public class TelaClienteResultado extends javax.swing.JFrame {
 
         jLabelSalvar1.setForeground(new java.awt.Color(255, 255, 255));
         jLabelSalvar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelSalvar1.setText("EXCLUIR CLIENTE");
+        jLabelSalvar1.setText("EXCLUIR FUNCIONÁRIO");
         jLabelSalvar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelSalvar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelSalvar1MouseClicked(evt);
             }
         });
+
+        jTextMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextMatriculaActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("MATRÍCULA:");
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Tipo:");
 
         javax.swing.GroupLayout jPanelResultadoLayout = new javax.swing.GroupLayout(jPanelResultado);
         jPanelResultado.setLayout(jPanelResultadoLayout);
@@ -230,16 +244,21 @@ public class TelaClienteResultado extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addGap(25, 25, 25))
                     .addGroup(jPanelResultadoLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
                         .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelResultadoLayout.createSequentialGroup()
-                                .addGap(106, 106, 106)
+                                .addGap(190, 190, 190)
                                 .addComponent(jLabel13))
                             .addGroup(jPanelResultadoLayout.createSequentialGroup()
                                 .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResultadoLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel18))
+                                    .addGroup(jPanelResultadoLayout.createSequentialGroup()
+                                        .addGap(84, 84, 84)
+                                        .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel15)
+                                            .addComponent(jLabel16))))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelResultadoLayout.createSequentialGroup()
                                         .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,15 +273,19 @@ public class TelaClienteResultado extends javax.swing.JFrame {
                                             .addGroup(jPanelResultadoLayout.createSequentialGroup()
                                                 .addComponent(jLabel17)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabelSalvar)
+                                                    .addComponent(jTextTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addGroup(jPanelResultadoLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
                                         .addComponent(jLabelSalvar1)
-                                        .addGap(80, 80, 80)
-                                        .addComponent(jLabelEditar)
-                                        .addGap(50, 50, 50)
-                                        .addComponent(jLabelSalvar)))))
-                        .addContainerGap(100, Short.MAX_VALUE))))
+                                        .addGap(86, 86, 86)
+                                        .addComponent(jLabelEditar))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResultadoLayout.createSequentialGroup()
+                                        .addComponent(jLabel19)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(84, Short.MAX_VALUE))))
         );
         jPanelResultadoLayout.setVerticalGroup(
             jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,12 +309,17 @@ public class TelaClienteResultado extends javax.swing.JFrame {
                     .addComponent(jLabel17)
                     .addComponent(jTextTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelEditar)
-                        .addComponent(jLabelSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelSalvar1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19)
+                    .addComponent(jTextTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSalvar1)
+                    .addComponent(jLabelEditar)
+                    .addComponent(jLabelSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -314,7 +342,7 @@ public class TelaClienteResultado extends javax.swing.JFrame {
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
         mainPanel.removeAll();
-        TelaClienteNovo t = new TelaClienteNovo();
+        TelaFuncionarioNovo t = new TelaFuncionarioNovo();
         mainPanel.add(t.getPanel());
         mainPanel.repaint();
         mainPanel.revalidate();
@@ -323,11 +351,19 @@ public class TelaClienteResultado extends javax.swing.JFrame {
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
         mainPanel.removeAll();
-        TelaClientePesquisa t = new TelaClientePesquisa();
+        TelaFuncionarioPesquisa t = new TelaFuncionarioPesquisa();
         mainPanel.add(t.getPanel());
         mainPanel.repaint();
         mainPanel.revalidate();
     }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        TelaMenuAtendente t = new TelaMenuAtendente();
+        mainPanel.removeAll();
+        mainPanel.add(t.getPanel());
+        mainPanel.repaint();
+        mainPanel.revalidate();
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
@@ -362,12 +398,12 @@ public class TelaClienteResultado extends javax.swing.JFrame {
         jTextTelefone.setEditable(false);
         jLabelSalvar.setVisible(false);
         jLabelEditar.setVisible(true);
-        Cliente cliente = new Cliente();
-        cliente.setCpf(jTextCPF.getText());
-        cliente.setNome(jTextNome.getText());
-        cliente.setEmail(jTextEmail.getText());
-        cliente.setTelefone(jTextTelefone.getText());
-        if (cliente.alterar()){
+        Funcionario funcionario = new Funcionario();
+        funcionario.setCpf(jTextCPF.getText());
+        funcionario.setNome(jTextNome.getText());
+        funcionario.setEmail(jTextEmail.getText());
+        funcionario.setTelefone(jTextTelefone.getText());
+        if (funcionario.alterar()){
             JOptionPane.showMessageDialog(rootPane, "Alterado com sucesso.");
         }
         else{
@@ -377,29 +413,24 @@ public class TelaClienteResultado extends javax.swing.JFrame {
 
     private void jLabelSalvar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSalvar1MouseClicked
         // TODO add your handling code here:
-        Cliente cliente = new Cliente();
-        cliente.setCpf(jTextCPF.getText());
-        if (cliente.excluir()){
+        Funcionario funcionario = new Funcionario();
+        funcionario.setCpf(jTextCPF.getText());
+        if (funcionario.excluir()){
             JOptionPane.showMessageDialog(rootPane, "Excluido com sucesso.");
         }
         else{
             JOptionPane.showMessageDialog(rootPane, "Problemas na exclusão");
         }
         mainPanel.removeAll();
-        TelaClientePesquisa t = new TelaClientePesquisa();
+        TelaFuncionarioPesquisa t = new TelaFuncionarioPesquisa();
         mainPanel.add(t.getPanel());
         mainPanel.repaint();
         mainPanel.revalidate();
     }//GEN-LAST:event_jLabelSalvar1MouseClicked
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        TelaMenuAtendente t = new TelaMenuAtendente();
-        mainPanel.removeAll();
-        mainPanel.add(t.getPanel());
-        mainPanel.repaint();
-        mainPanel.revalidate();
-    }//GEN-LAST:event_jLabel7MouseClicked
-
+    private void jTextMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextMatriculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextMatriculaActionPerformed
     public JPanel getPanel(){
         return mainPanel;
     }
@@ -407,10 +438,13 @@ public class TelaClienteResultado extends javax.swing.JFrame {
     public void setTextFields(){
         jLabelSalvar.setVisible(false);
         jLabelSalvar1.setVisible(false);
-        jTextNome.setText(cliente.getNome());
-        jTextCPF.setText(cliente.getCpf());
-        jTextTelefone.setText(cliente.getTelefone());
-        jTextEmail.setText(cliente.getEmail());
+        jTextNome.setText(funcionario.getNome());
+        jTextCPF.setText(funcionario.getCpf());
+        jTextTelefone.setText(funcionario.getTelefone());
+        jTextEmail.setText(funcionario.getEmail());
+        //jTextMatricula.setText(Integer.parseInt(funcionario.getMatricula()));
+        //jTextTipo.setText(funcionario.getTipo());
+        
     }
     
     /**
@@ -430,20 +464,20 @@ public class TelaClienteResultado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaClienteResultado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFuncionarioResultado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaClienteResultado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFuncionarioResultado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaClienteResultado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFuncionarioResultado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaClienteResultado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFuncionarioResultado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaClienteResultado().setVisible(true);
+                new TelaFuncionarioResultado().setVisible(true);
             }
         });
     }
@@ -456,6 +490,8 @@ public class TelaClienteResultado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -466,8 +502,10 @@ public class TelaClienteResultado extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelResultado;
     private javax.swing.JTextField jTextCPF;
     private javax.swing.JTextField jTextEmail;
+    private javax.swing.JTextField jTextMatricula;
     private javax.swing.JTextField jTextNome;
     private javax.swing.JTextField jTextTelefone;
+    private javax.swing.JTextField jTextTipo;
     private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
 }
