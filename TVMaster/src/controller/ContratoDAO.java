@@ -24,20 +24,12 @@ public class ContratoDAO {
                     + "values (?, ?, ?, ?, ?);";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
-            System.out.println("a");
             p.setInt(1, contrato.getReceptores());
-            System.out.println("b");
             p.setString(2, contrato.getEndereco());
-            System.out.println("c");
             p.setInt(3, contrato.getEstado());
-            System.out.println("d");
             p.setString(4, contrato.getCidade());
-            System.out.println("e");
             p.setString(5, contrato.getCpf());
-            System.out.println("f");
             resposta = p.executeUpdate();
-            System.out.println("resposta:" + resposta);
-            System.out.println("g");
         } catch(SQLException e) {
             throw new RuntimeException(e);
         } finally {

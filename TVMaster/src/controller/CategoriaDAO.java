@@ -37,13 +37,15 @@ public class CategoriaDAO {
     
     public void pesquisarCategoria(Categoria categoria) {
         try {
-            String sql = "SELECT * FROM bdmaster.categoria WHERE numero = ?;";
+            String sql = "SELECT * FROM bdmaster.categoria WHERE nome = ?;";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
-            p.setString(1, categoria.getNome());      //????
+            System.out.println("Categoria:"+categoria.getNome());
+            p.setString(1, categoria.getNome());
             ResultSet rs = p.executeQuery();
             while(rs.next()) {
                 categoria.setNome(rs.getString("nome"));
+                categoria.setId(rs.getInt("idCategoria"));
             } 
         } catch(SQLException e) {
         }
@@ -52,14 +54,13 @@ public class CategoriaDAO {
     public boolean alterarCategoria(Categoria categoria) {
         int resposta = 0;
         try{
-            String sql = "UPDATE bdmaster.categoria SET nome = ? WHERE nome = ?";
+            String sql = "UPDATE bdmaster.categoria SET nome = ? WHERE idCategoria = ?;";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
             p.setString(1, categoria.getNome());
+            p.setInt(2, categoria.getId());
             resposta = p.executeUpdate();
-            System.out.println("Resposta: " + resposta);
-        } catch(SQLException e){
-            
+        } catch(SQLException e){    
         } finally {
             if(resposta > 0){
                 return true;
@@ -72,10 +73,10 @@ public class CategoriaDAO {
     public boolean excluirCategoria(Categoria categoria) {
         int resposta = 0;
         try{
-            String sql = "DELETE FROM bdmaster.categoria WHERE nome = ?;";
+            String sql = "DELETE FROM bdmaster.categoria WHERE idCategoria = ?;";
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement p = conn.prepareStatement(sql);
-            p.setString(1, categoria.getNome());
+            p.setInt(1, categoria.getId());
             resposta = p.executeUpdate();
         } catch(SQLException e){
         } finally {

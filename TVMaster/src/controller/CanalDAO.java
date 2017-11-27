@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Canal;
 
 /**
@@ -85,6 +86,45 @@ public class CanalDAO {
         } catch(SQLException e){
         } finally {
             if(resposta > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    
+    public ArrayList<Canal> pesquisarCanaisCategoria(String nomeCategoria){
+        ArrayList<Canal> canais = new ArrayList<Canal>();
+        try{
+            String sql = "SELECT * FROM bdmaster.canal WHERE fk_categoria = "
+                    + "(SELECT idCategoria FROM bdmaster.categoria WHERE nome = ?);";
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement p = conn.prepareStatement(sql);
+            p.setString(1, nomeCategoria);
+            ResultSet rs = p.executeQuery();
+            while(rs.next()){
+                Canal canal = new Canal();
+                canal.setNome(rs.getString("nome"));
+                canal.setNumero(rs.getInt("numero"));
+                canal.setPreco(rs.getFloat("preco"));
+                canais.add(canal);
+            }
+        } catch(SQLException e){  
+        }
+        return canais;
+    }
+    
+    public boolean excluirCanaisCategoria(int idCategoria){
+        int resposta = 0;
+        try{
+           String sql = "DELETE FROM bdmaster.canal WHERE fk_categoria = ?";
+           Connection conn = ConnectionFactory.getConnection();
+           PreparedStatement p = conn.prepareStatement(sql);
+           p.setInt(1, idCategoria);
+           resposta = p.executeUpdate();
+        } catch(SQLException e){  
+        } finally{
+            if(resposta > 0){
                 return true;
             } else {
                 return false;
