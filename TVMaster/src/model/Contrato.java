@@ -4,11 +4,11 @@ import controller.ContratoDAO;
 import java.util.ArrayList;
 
 public class Contrato {
-    int numero, receptores = 0, estado;
-    String endereco, cidade, cpf;
-    Plano plano;
-    ArrayList <Chamado> chamados = new ArrayList<Chamado>();
-    ArrayList <Fatura> faturas = new ArrayList<Fatura>();
+    private int numero, receptores = 0, estado = 0;
+    private String endereco, cidade, cpf;
+    private Plano plano;
+    private ArrayList <Chamado> chamados = new ArrayList<Chamado>();
+    private ArrayList <Fatura> faturas = new ArrayList<Fatura>();
 
     public Contrato(int numero, int receptores, String endereco, int estado, String cidade, Plano plano) {
         this.numero = numero;
@@ -28,9 +28,8 @@ public class Contrato {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+        System.out.println(cpf);
     }
-    
-    
     
     public ArrayList<Chamado> getChamados() {
         return chamados;
@@ -78,6 +77,15 @@ public class Contrato {
 
     public void setPlano(Plano plano) {
         this.plano = plano;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+    
+
+    public void setReceptores(int receptores) {
+        this.receptores = receptores;
     }
     
     public String verificarInadimplencia(){
@@ -156,9 +164,28 @@ public class Contrato {
         return null;
     }
     
+    public boolean incluir(){
+        ContratoDAO contratoDAO = new ContratoDAO();
+        return contratoDAO.incluirContrato(this);
+    }
+    
     public void pesquisar(){
         ContratoDAO contratoDAO = new ContratoDAO();
         contratoDAO.pesquisarContrato(this);
     }
     
+    public boolean atualizar(){
+        ContratoDAO contratoDAO = new ContratoDAO();
+        return contratoDAO.alterarContrato(this);
+    }
+    
+    public boolean alterarEstado(){
+        ContratoDAO contratoDAO = new ContratoDAO();
+        return contratoDAO.alterarEstadoContrato(this);
+    }
+    
+    public void pesquisarNumero(){
+        ContratoDAO contratoDAO = new ContratoDAO();
+        contratoDAO.pesquisarNumeroContrato(this);
+    }
 }

@@ -2,8 +2,8 @@ package model;
 
 public class Chamado {
     private String motivo, solucao;
-    private int data, protocolo;
-    private Tecnico tecnico;
+    private int data, protocolo, contrato;
+    private Funcionario tecnico;
     private boolean situacao;
     private Cliente solicitante;
 
@@ -14,6 +14,18 @@ public class Chamado {
         this.protocolo = protocolo;
         this.situacao = situacao;
         this.solicitante = solicitante;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
+
+    public int getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(int contrato) {
+        this.contrato = contrato;
     }
 
     public String getMotivo() {
@@ -40,12 +52,16 @@ public class Chamado {
         return protocolo;
     }
 
-    public Tecnico getTecnico() {
+    public Funcionario getTecnico() {
         return tecnico;
     }
 
     public boolean isSituacao() {
         return situacao;
+    }
+
+    public void setSituacao(boolean situacao) {
+        this.situacao = situacao;
     }
 
     public Cliente getSolicitante() {
@@ -60,7 +76,7 @@ public class Chamado {
         return "O chamado já encontrava-se fechado!";
     }
     
-    public void alocarTecnico(Tecnico tecnico){
+    public void alocarTecnico(Funcionario tecnico){
         this.tecnico = tecnico;
     }
  
